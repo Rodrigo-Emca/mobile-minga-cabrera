@@ -12,13 +12,6 @@ function Hero() {
                 <View style={styles.containerTexto}>
                     <Text style={styles.title}>Live the emotion of the manga</Text>
                     <Text style={styles.text}>Find the perfect manga for you</Text>
-                    {/* <View style={styles.contenedorButton}>
-                        <Button style={styles.button}
-                            title="Explore"
-                            color= "#F9A8D4"
-                            onPress={() => Alert.alert('Button with adjusted color pressed')}
-                        />
-                    </View> */}
                     <View style={styles.btnCont}>
                         <Text style={styles.btnTexto}>
                             Explore
