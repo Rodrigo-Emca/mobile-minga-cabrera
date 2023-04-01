@@ -1,13 +1,13 @@
 import { StyleSheet, ScrollView, SafeAreaView, StatusBar } from "react-native";
 import Hero from "../components/Hero";
-import SignUp from "../components/SignUp";
+import SignIn from "../components/SignIn";
 
 function HomeScreen() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView  style={styles.scrollView}>
                 <Hero/>
-                <SignUp/>
+                <SignIn/>
             </ScrollView>
         </SafeAreaView>
     );

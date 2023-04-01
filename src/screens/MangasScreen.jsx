@@ -1,10 +1,11 @@
-import { Text, View, StyleSheet, SafeAreaView, StatusBar} from "react-native";
+import { View, StyleSheet, SafeAreaView, StatusBar} from "react-native";
+import SignUp from "../components/SignUp";
 
 function MangasScreen() {
     return (
         <SafeAreaView style={styles.container}>
             <View>
-                <Text>Mangas Screen</Text>
+                <SignUp/>
             </View>
         </SafeAreaView>
     );

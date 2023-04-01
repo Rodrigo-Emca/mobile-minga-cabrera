@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Button } from 'react-native';
+import React, { useState } from 'react';
+import axios from 'axios'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 
 import profileIcon from '../images/profileIcon.png';
 import emailIcon from '../images/emailIcon.png';
@@ -8,65 +9,120 @@ import passwordIcon from '../images/lockIcon.png';
 import imgGoogle from '../images/imgGoogle.png';
 
 function SignUpFormulario() {
-    const name = useRef(null);
-    const mail = useRef(null);
-    const photo = useRef(null);
-    const password = useRef(null);
+    const [name, setName] = useState('');
+    const [mail, setMail] = useState('');
+    const [photo, setPhoto] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleSubmit = () => {
-        // Aquí iría la lógica para manejar el envío del formulario
-    };
+    async function handleSubmit() {
+        let data ={
+            name: name,
+            mail: mail,
+            password: password,
+            photo: photo,
+        }
+        console.log(data)
+        setName('')
+        setMail('')
+        setPhoto('')
+        setPassword('')
+    
+        let url_signUp = 'https://minga-back-446z.onrender.com/auth/signup';
+
+        try {
+        await axios.post(url_signUp, data).then((res) => {
+            console.log('funcionó' + res);
+            Alert.alert('¡Usuario creado!', 'Bienvenido a Minga', [
+                {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                },
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ]);
+        });
+        } catch (error) {
+        let err = error.response.data.message;
+            console.log('Ocurrió un error: ' + err);
+            Alert.alert('Ooops, something went wrong!', 'Please, try again!', [
+                {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                },
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ]);
+        }
+    }
 
     return (
         <View style={styles.formularioRegistro}>
-            <View style={styles.innerFormulario}>
-                <Text style={styles.legend}>Name</Text>
-                <TextInput ref={name} style={styles.input} name='name' required />
-                <TouchableOpacity style={styles.icon}>
-                <Image source={profileIcon} alt="profileIcon" />
-                </TouchableOpacity>
+
+            <View style={styles.contentForm}>
+                <View style={styles.innerFormulario}> 
+                    <Image source={profileIcon} alt="profileIcon" />
+                    <Text style={styles.legend}>Name</Text>
+                </View>
+                <TextInput
+                    placeholder='Write your name'
+                    style={styles.input}
+                    value={name}
+                    onChangeText={(text) => setName(text)}
+                />
             </View>
 
-            <View style={styles.innerFormulario}>
-                <Text style={styles.legend}>Email</Text>
-                <TextInput ref={mail} style={styles.input} name='mail' required />
-                <TouchableOpacity style={styles.icon}>
-                <Image source={emailIcon} alt="emailIcon" />
-                </TouchableOpacity>
+            <View style={styles.contentForm}>
+                <View style={styles.innerFormulario}> 
+                    <Image source={emailIcon} alt="emailIcon" />
+                    <Text style={styles.legend}>Email</Text>
+                </View>
+                <TextInput
+                    placeholder='Example@gmail.com'
+                    style={styles.input}
+                    value={mail}
+                    onChangeText={(text) => setMail(text)}
+                />
             </View>
 
-            <View style={styles.innerFormulario}>
-                <Text style={styles.legend}>Photo</Text>
-                <TextInput ref={photo} style={styles.input} name='photo' required />
-                <TouchableOpacity style={styles.icon}>
-                <Image source={cameraIcon} alt="photoIcon" />
-                </TouchableOpacity>
+            <View style={styles.contentForm}>
+                <View style={styles.innerFormulario}> 
+                    <Image source={cameraIcon} alt="photoIcon" />
+                    <Text style={styles.legend}>Photo</Text>
+                </View>
+                <TextInput
+                    placeholder='Photo URL'
+                    style={styles.input}
+                    value={photo}
+                    onChangeText={(text) => setPhoto(text)}
+                />
             </View>
 
-            <View style={styles.innerFormulario}>
-                <Text style={styles.legend}>Password</Text>
-                <TextInput ref={password} style={styles.input} name='password' required />
-                <TouchableOpacity style={styles.icon}>
-                <Image source={passwordIcon} alt="passwordIcon" />
-                </TouchableOpacity>
+
+            <View style={styles.contentForm}>
+                <View style={styles.innerFormulario}> 
+                    <Image source={passwordIcon} alt="passwordIcon" />
+                    <Text style={styles.legend}>Password</Text>
+                </View>
+                <TextInput
+                    placeholder='Password'
+                    style={styles.input}
+                    value={password}
+                    onChangeText={(text) => setPassword(text)}
+                    secureTextEntry={true}
+                />
             </View>
+
             <View style={styles.contenedorFinal}>
-                <TouchableOpacity style={styles.pSendNotif}>
-                    <View style={styles.checkSendNotif} />
-                    <Text style={styles.textSendNotif}>Send me a notification to my email</Text>
-                </TouchableOpacity>
 
                 <View style={styles.contenedorButton}>
-                        <Button style={styles.button}
-                            title="Sign Up"
-                            color= "#F9A8D4"
-                            onPress={() => Alert.alert('Button with adjusted color pressed')}
-                        />
-                    </View>
+                    <TouchableOpacity style={styles.btnSingIn} onPress={handleSubmit}>
+                        <Text style={styles.btnTextSingin}>Sign Up</Text>
+                    </TouchableOpacity>
+                </View>
 
                 <TouchableOpacity style={styles.buttonSignGoogle}>
                     <Image source={imgGoogle} />
-                    <Text style={styles.textButtonSignGoogle}>Sign with Google</Text>
+                    <Text style={styles.textButtonSignGoogle}>SignUp with Google</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -78,54 +134,62 @@ function SignUpFormulario() {
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: '#fff',
-            height: 400
+            height: 460
+        },
+        contentForm: {
+            width: '70%',
+            height: 80,
+            alignSelf: 'center',
+        },
+        legend: {
+            flex: 1,
         },
         innerFormulario: {
             flexDirection: 'row',
             alignItems: 'center',
             marginVertical: 10,
         },
-        legend: {
-            flex: 1,
-            marginRight: 10,
-            marginLeft: 25,
-        },
         input: {
-            flex: 3,
-            height: 40,
-            borderColor: 'gray',
             borderWidth: 1,
-            paddingHorizontal: 10,
+            borderColor: '#ccc',
+            borderRadius: 10,
+            padding: 10,
+            marginBottom: 10,
+            width: '100%',
         },
         icon: {
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
         },
-        pSendNotif: {
-            flexDirection: 'row',
-            alignItems: 'center'
-        },
         contenedorFinal: {
             alignItems: 'center',
             justifyContent: 'space-around',
             width: 400,
             height: 150,
-            //borderWidth: 5,
-            paddingTop: 10
+            paddingTop: 10,
         },
         contenedorButton: {
             width: 300,
             alignSelf: 'center',
         }, 
+        btnSingIn: {
+            backgroundColor: '#F9A8D4',
+            borderRadius: 10,
+            padding: 15,
+            alignItems: 'center',
+        },
+        btnTextSingin: {
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: 16,
+        },
         buttonSignGoogle: {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
             width: 300,
-            // borderWidth: 5,
-
-        }
+        },
     }
 )
 
