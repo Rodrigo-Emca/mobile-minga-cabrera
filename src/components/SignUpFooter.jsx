@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function SignUpFooter() {
+export default function SignUpFooter({ onPressSignIn }) {
     return (
         <View style={styles.container}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onPressSignIn}>
                 <Text style={styles.text}>Already have an account? Log in</Text>
             </TouchableOpacity>
             <TouchableOpacity>
