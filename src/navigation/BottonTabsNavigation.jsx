@@ -6,7 +6,10 @@ const Tab = createMaterialBottomTabNavigator();
 
 function BottomTabsNavigator() {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator  initialRouteName="Home"
+        activeColor="#f0edf6"
+        inactiveColor="#3e2465"
+        barStyle={{ backgroundColor: 'pink' }}>
             <Tab.Screen name='Home' component={HomeScreen} />
             <Tab.Screen name='Mangas' component={MangasScreen} />
         </Tab.Navigator>
