@@ -12,12 +12,17 @@ function Hero() {
                 <View style={styles.containerTexto}>
                     <Text style={styles.title}>Live the emotion of the manga</Text>
                     <Text style={styles.text}>Find the perfect manga for you</Text>
-                    <View style={styles.contenedorButton}>
+                    {/* <View style={styles.contenedorButton}>
                         <Button style={styles.button}
                             title="Explore"
                             color= "#F9A8D4"
                             onPress={() => Alert.alert('Button with adjusted color pressed')}
                         />
+                    </View> */}
+                    <View style={styles.btnCont}>
+                        <Text style={styles.btnTexto}>
+                            Explore
+                        </Text>
                     </View>
                 </View>
             </ImageBackground>
@@ -43,6 +48,7 @@ const styles = StyleSheet.create({
         flex: 0.6,
         height: 705,
         justifyContent: 'center',
+        alignItems: 'center',
         top: -60
     },
     title: {
@@ -67,6 +73,21 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
         },
+    btnCont:{
+        marginTop: 30,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 363,
+        height: 69,
+        backgroundColor: '#F9A8D4',
+        borderRadius: 5000,
+    },
+    btnTexto: {
+        color: '#fff',
+        fontSize: 20,
+        fontWeight: 500,
+    }
 })
 
 export default Hero
