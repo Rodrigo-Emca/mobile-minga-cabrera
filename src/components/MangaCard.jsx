@@ -33,13 +33,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    width: '80%'
+    borderRadius: 5,
+    width: '85%',
+    margin: 10
   },
   spanCard: {
     width: 15,
     height: 200,
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
     marginRight: 10
   },
   infoContainer: {
@@ -56,7 +60,11 @@ const styles = StyleSheet.create({
   },
   img: {
     width: 150,
-    height: 200
+    height: 200,
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
   },
   btnCont:{
     marginTop: 30,

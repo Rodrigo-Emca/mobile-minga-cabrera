@@ -33,7 +33,7 @@ export default function MangasAll() {
         dispatch(
             read_mangas({ inputText: defaultText, inputCheck: defaultChecks, inputPage: pageNumber })
             );
-        }, [defaultText, defaultChecks, pageNumber, dispatch]);
+        }, [defaultText, defaultChecks, pageNumber, dispatch, []]);
 
     // function handleChange(){
     //     setReload(!reload)
