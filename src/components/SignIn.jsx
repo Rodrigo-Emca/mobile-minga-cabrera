@@ -1,21 +1,23 @@
-import { View, StyleSheet } from 'react-native';
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import SignUpEncabezado from './SignUpEncabezado';
 import SignInFormulario from './SignInFormulario';
-import SignIpFooter from './SignInFooter';
+import SignInFooter from "./SignInFooter";
 
-function SignIn() {
+export default function SignIn(props) {
 
     return (
-        <View>
+        <View style={styles.container}>
             <SignUpEncabezado/>
-            <SignInFormulario/>
-            <SignIpFooter/>
+            <SignInFormulario />
+            <SignInFooter onPressSignUp={props.onPressSignUp} />
         </View>
     );
-    }
+}
 
-    const styles = StyleSheet.create({
-    }
-)
-
-export default SignIn
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+    },
+});

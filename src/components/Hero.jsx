@@ -1,4 +1,4 @@
-import { Image, Text, View, StyleSheet, ImageBackground, ScrollView, SafeAreaView, StatusBar, Button, Alert, Pressable } from "react-native";
+import { Image, Text, View, StyleSheet, ImageBackground } from "react-native";
 import homeImage from '../images/home.png'
 import logo from '../images/Logo.png'
 
@@ -12,13 +12,6 @@ function Hero() {
                 <View style={styles.containerTexto}>
                     <Text style={styles.title}>Live the emotion of the manga</Text>
                     <Text style={styles.text}>Find the perfect manga for you</Text>
-                    {/* <View style={styles.contenedorButton}>
-                        <Button style={styles.button}
-                            title="Explore"
-                            color= "#F9A8D4"
-                            onPress={() => Alert.alert('Button with adjusted color pressed')}
-                        />
-                    </View> */}
                     <View style={styles.btnCont}>
                         <Text style={styles.btnTexto}>
                             Explore
@@ -63,16 +56,12 @@ const styles = StyleSheet.create({
         fontSize: 40,
         fontWeight: '200'
     },
-    contenedorButton: {
-        width: 250,
-        alignSelf: 'center',
-    },
     image: {
         flex: 1,
         justifyContent: 'center',
         width: '100%',
         height: '100%'
-        },
+    },
     btnCont:{
         marginTop: 30,
         display: 'flex',

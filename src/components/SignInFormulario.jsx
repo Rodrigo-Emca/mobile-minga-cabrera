@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { View, TextInput, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native'
+
 import imgGoogle from '../images/imgGoogle.png';
 import emailIcon from '../images/emailIcon.png';
 import passwordIcon from '../images/lockIcon.png';
