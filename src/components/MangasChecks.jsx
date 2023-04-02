@@ -25,7 +25,7 @@ export default function MangaChecks(props) {
 
     const checkboxValues = useSelector((store) => store.checks.checks);
 
-    const [allSelected, setAllSelected] = useState(false);
+    const [allSelected, setAllSelected] = useState(true);
 
     useEffect(() => {
         if (allSelected) {
@@ -39,15 +39,24 @@ export default function MangaChecks(props) {
     const handleCheck = (value) => {
         let newValues;
         if (checkboxValues.includes(value)) {
-        newValues = checkboxValues.filter((v) => v !== value);
+            newValues = checkboxValues.filter((v) => v !== value);
+            setAllSelected(false);
         } else {
-        newValues = [...checkboxValues, value];
+            newValues = [...checkboxValues, value];
+            if (newValues.length === category_id.length) {
+                setAllSelected(true);
+            }
         }
         dispatch(captureChecks({ inputCheck: newValues }));
     };
 
     const handleAllSelected = (value) => {
         setAllSelected(value);
+        if (value) {
+            dispatch(captureChecks({ inputCheck: category_id }));
+        } else {
+            dispatch(captureChecks({ inputCheck: [] }));
+        }
     };
 
     return (
