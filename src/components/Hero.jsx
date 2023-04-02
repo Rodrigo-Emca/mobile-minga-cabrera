@@ -1,4 +1,4 @@
-import { Image, Text, View, StyleSheet, ImageBackground, ScrollView, SafeAreaView, StatusBar, Button, Alert, Pressable } from "react-native";
+import { Image, Text, View, StyleSheet, ImageBackground } from "react-native";
 import homeImage from '../images/home.png'
 import logo from '../images/Logo.png'
 
@@ -56,16 +56,12 @@ const styles = StyleSheet.create({
         fontSize: 40,
         fontWeight: '200'
     },
-    contenedorButton: {
-        width: 250,
-        alignSelf: 'center',
-    },
     image: {
         flex: 1,
         justifyContent: 'center',
         width: '100%',
         height: '100%'
-        },
+    },
     btnCont:{
         marginTop: 30,
         display: 'flex',

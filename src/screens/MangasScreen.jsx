@@ -1,16 +1,19 @@
-import { View, StyleSheet, SafeAreaView, StatusBar} from "react-native";
-import SignUp from "../components/SignUp";
+import { ScrollView, StyleSheet, SafeAreaView, StatusBar} from "react-native";
+import { Provider } from 'react-redux';  
+import { store } from '../../store/store'
+import MangasAll from "../components/MangasAll";
 
-function MangasScreen() {
+export default function MangasScreen() {
     return (
-        <SafeAreaView style={styles.container}>
-            <View>
-                <SignUp/>
-            </View>
-        </SafeAreaView>
+        <Provider store={store}>
+            <SafeAreaView style={styles.container}>
+                <ScrollView>
+                    <MangasAll/>
+                </ScrollView>
+            </SafeAreaView>
+        </Provider>
     );
 }
-
 
 const styles = StyleSheet.create({
     container: { 
@@ -20,4 +23,3 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 })
-export default MangasScreen
