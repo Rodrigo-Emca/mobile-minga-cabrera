@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { Image, Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
 import MangaCard from "./MangaCard";
+import PageButtonsPrevNext from './PageButtonsPrevNext';
 import { useSelector,useDispatch } from 'react-redux'
 import textActions from '../../store/Search/actions'
 import mangasActions from '../../store/Mangas/actions'
@@ -62,22 +63,7 @@ export default function MangasAll() {
                 <Text style={{ textAlign: 'center', marginTop: 20 }}>Not Found</Text>
                 )}
             </View>
-            <View style={styles.btnContainer}>
-                {pageNumber === 1 ? null : (
-                    <TouchableOpacity
-                    style={styles.btnPrev}
-                    onPress={decreasePageNumber}>
-                    <Text>Prev</Text>
-                    </TouchableOpacity>
-                )}
-                {(mangas.length === 6 || mangas.length === 10) && (
-                    <TouchableOpacity
-                    style={styles.btnNext}
-                    onPress={increasePageNumber}>
-                    <Text>Next</Text>
-                    </TouchableOpacity>
-                )}
-            </View>
+            <PageButtonsPrevNext pageNumber={pageNumber} increasePageNumber={increasePageNumber} decreasePageNumber={decreasePageNumber} mangas={mangas} />
         </View>
     );
 }
@@ -139,31 +125,5 @@ const styles = StyleSheet.create({
     },
     cardsContainer: {
         alignItems: 'center',
-    },
-    btnContainer: {
-        width: 450,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    btnPrev: {
-        marginTop: 5,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 150,
-        height: 60,
-        backgroundColor: 'orange',
-        borderRadius: 5000,
-    },
-    btnNext: {
-        marginTop: 5,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 150,
-        height: 60,
-        backgroundColor: 'orange',
-        borderRadius: 5000,
     },
 })
