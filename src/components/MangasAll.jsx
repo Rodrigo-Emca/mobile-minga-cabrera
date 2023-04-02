@@ -1,20 +1,17 @@
 import React,{useState,useEffect} from 'react'
-import { Image, Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
+import { Image, Text, View, StyleSheet, ImageBackground, TouchableOpacity, TextInput} from "react-native";
 import MangaCard from "./MangaCard";
 import PageButtonsPrevNext from './PageButtonsPrevNext';
 import MangaChecks from './MangasChecks';
 import { useSelector,useDispatch } from 'react-redux'
-import textActions from '../../store/Search/actions'
 import mangasActions from '../../store/Mangas/actions'
 import mangasBack from '../images/mangas_background.png'
 import logo from '../images/Logo.png'
 
-const {captureText} = textActions
 const {read_mangas} = mangasActions
 
 export default function MangasAll() {
-    //const title = useRef("")
-    //const [reload,setReload] = useState(false)
+    const [reload,setReload] = useState(false)
     
     const dispatch = useDispatch();
     const [pageNumber, setPageNumber] = useState(1);
@@ -35,12 +32,7 @@ export default function MangasAll() {
         dispatch(
             read_mangas({ inputText: defaultText, inputCheck: defaultChecks, inputPage: pageNumber })
             );
-        }, [defaultText, defaultChecks, pageNumber, dispatch]);
-
-    // function handleChange(){
-    //     setReload(!reload)
-    //     dispatch(captureText({inputText: title.current.value}))
-    // }   
+        }, [defaultChecks, pageNumber, dispatch]);
 
     return (
         <View  style={styles.container}>
@@ -50,9 +42,6 @@ export default function MangasAll() {
                 </View>
                 <View style={styles.containerTexto}>
                     <Text style={styles.title}>Mangas</Text>
-                    <View style={styles.btnCont}>
-                        <Text style={styles.btnTexto}>Find your manga</Text>
-                    </View>
                 </View>
             </ImageBackground>
             <View style={styles.MangaChecksContainer}>

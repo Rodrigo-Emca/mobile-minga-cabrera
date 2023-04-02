@@ -25,6 +25,17 @@ export default function MangaChecks(props) {
 
     const checkboxValues = useSelector((store) => store.checks.checks);
 
+    const [allSelected, setAllSelected] = useState(false);
+
+    useEffect(() => {
+        if (allSelected) {
+            dispatch(captureChecks({ inputCheck: category_id }));
+        } else {
+            dispatch(captureChecks({ inputCheck: [] }));
+        }
+    }, [allSelected]);
+
+
     const handleCheck = (value) => {
         let newValues;
         if (checkboxValues.includes(value)) {
@@ -35,15 +46,19 @@ export default function MangaChecks(props) {
         dispatch(captureChecks({ inputCheck: newValues }));
     };
 
+    const handleAllSelected = (value) => {
+        setAllSelected(value);
+    };
+
     return (
         <View style={styles.formChecks} ref={props.parentref}>
-            <View style={[styles.checksContainer, checkboxValues.includes('') ? styles.selectedCheck : null]}>
-                <Text style={styles.checksText} onPress={() => handleCheck('')}>All</Text>
+            <View style={[styles.checksContainer, allSelected ? styles.selectedCheck : null]}>
+                <Text style={styles.checksText} onPress={() => handleAllSelected(!allSelected)}>All</Text>
                 <Switch
-                style={styles.inputChecks}
-                name="All"
-                value={checkboxValues.includes('')}
-                onValueChange={() => handleCheck('')}
+                    style={styles.inputChecks}
+                    name="All"
+                    value={allSelected}
+                    onValueChange={() => handleAllSelected(!allSelected)}
                 />
             </View>
 

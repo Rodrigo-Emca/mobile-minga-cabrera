@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     btnContainer: {
         width: 450,
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "center",
         alignItems: "center",
     },
     btnPrev: {
