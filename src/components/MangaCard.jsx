@@ -51,12 +51,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   title: {
-    fontSize: 20,
+    fontSize: 23,
     fontWeight: 'bold',
-    marginBottom: 5
+    marginBottom: 5,
+    marginLeft: 5
   },
   category: {
-    fontSize: 18
+    fontSize: 18,
+    marginLeft: 5
   },
   img: {
     width: 150,
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
   },
   btnCont:{
-    marginTop: 30,
+    marginTop: 35,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

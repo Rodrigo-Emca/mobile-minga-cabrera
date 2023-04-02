@@ -1,4 +1,4 @@
-import React,{useRef,useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import { Image, Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
 import MangaCard from "./MangaCard";
 import { useSelector,useDispatch } from 'react-redux'
@@ -33,7 +33,7 @@ export default function MangasAll() {
         dispatch(
             read_mangas({ inputText: defaultText, inputCheck: defaultChecks, inputPage: pageNumber })
             );
-        }, [defaultText, defaultChecks, pageNumber, dispatch, []]);
+        }, [defaultText, defaultChecks, pageNumber, dispatch]);
 
     // function handleChange(){
     //     setReload(!reload)
@@ -77,7 +77,7 @@ export default function MangasAll() {
                     <Text>Next</Text>
                     </TouchableOpacity>
                 )}
-                </View>
+            </View>
         </View>
     );
 }
