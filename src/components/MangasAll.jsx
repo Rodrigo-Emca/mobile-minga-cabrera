@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { Image, Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
 import MangaCard from "./MangaCard";
 import PageButtonsPrevNext from './PageButtonsPrevNext';
+import MangaChecks from './MangasChecks';
 import { useSelector,useDispatch } from 'react-redux'
 import textActions from '../../store/Search/actions'
 import mangasActions from '../../store/Mangas/actions'
@@ -50,12 +51,13 @@ export default function MangasAll() {
                 <View style={styles.containerTexto}>
                     <Text style={styles.title}>Mangas</Text>
                     <View style={styles.btnCont}>
-                        <Text style={styles.btnTexto}>
-                            Find your manga
-                        </Text>
+                        <Text style={styles.btnTexto}>Find your manga</Text>
                     </View>
                 </View>
             </ImageBackground>
+            <View style={styles.MangaChecksContainer}>
+                <MangaChecks />
+            </View>
             <View style={styles.cardsContainer}>
                 {mangas.length ? (
                 mangas.map((manga) => <MangaCard key={manga._id} title_={manga.title} category_={manga.category_id} photo={manga.cover_photo} _id={manga._id} />)
@@ -126,4 +128,14 @@ const styles = StyleSheet.create({
     cardsContainer: {
         alignItems: 'center',
     },
+    MangaChecksContainer: {
+        marginTop: 10,
+        display: 'flex',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        width: '85%',
+        height: 100,
+        backgroundColor: 'orange',
+        borderRadius: 15,
+    }
 })
