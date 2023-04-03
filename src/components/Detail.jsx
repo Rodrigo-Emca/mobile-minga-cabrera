@@ -8,23 +8,11 @@ const {get_chapters} = getChapters
 
 export default function Detail(props) {
     const id = props._id
-    console.log(id)
 
     const [pageNumber, setPageNumber] = useState(1);
 
-    // const increasePageNumber = () => {
-    //     setPageNumber(prevPageNumber => prevPageNumber + 1);
-    // };
-
-    // const decreasePageNumber = () => {
-    //     setPageNumber(prevPageNumber => prevPageNumber - 1);
-    // };
-
     const dispatch = useDispatch();
     const [MANGA, setManga] = useState(null);
-    console.log(MANGA)
-    // const [CHAPTERS, setChapters] = useState(null);
-    // const [mostrarChapters, setMostrarChapters] = useState(false);
 
     useEffect(() => {
         dispatch(get_manga({ inputId: id, inputPage: pageNumber }))

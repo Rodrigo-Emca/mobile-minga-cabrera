@@ -25,7 +25,6 @@ export default function MangasAll() {
     };
 
     let mangas = useSelector(store => store.mangas.mangas)
-    console.log(mangas)
     let defaultText = useSelector(store => store.text.text)
     let defaultChecks = useSelector(store=>store.checks.checks)
 

@@ -1,28 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { View, ScrollView, Image, Text, StyleSheet, SafeAreaView, StatusBar, Button} from "react-native";
-import { useNavigation , useRoute } from '@react-navigation/native';
-import { Provider, useSelector,useDispatch  } from 'react-redux';  
+import React from "react";
+import { ScrollView, StyleSheet, SafeAreaView, StatusBar } from "react-native";
+import { useRoute } from '@react-navigation/native';
+import { Provider } from 'react-redux';  
 import { store } from '../../store/store'
 import Detail from "../components/Detail";
+import Chapters from "../components/Chapters";
 
 export default function MangaDetailsScreen() {
-    const navigation = useNavigation();
     const route = useRoute();
     const { manga } = route.params;
     const id = manga._id
-    console.log(id)
 
     return (
         <Provider store={store}>
             <SafeAreaView style={styles.container}>
                 <ScrollView>
                     <Detail _id={id} />
-                    {/* <Button
-                        title="Back"
-                        onPress={() => {
-                            navigation.goBack();
-                        }}
-                        /> */}
+                    <Chapters _id={id} />
                 </ScrollView>
             </SafeAreaView>
         </Provider>
@@ -43,5 +37,5 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 5,
         borderTopLeftRadius: 10,
         borderBottomLeftRadius: 10,
-      },
+    },
 })
