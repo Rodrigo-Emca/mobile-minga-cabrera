@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
 import MangasScreen from "../screens/MangasScreen";
 import MangaDetailsScreen from "../screens/MangaDetailsScreen";
+import ChapterScreen from "../screens/ChapterScreen";
 
 
 const MangasStackNavigator = createNativeStackNavigator();
@@ -23,6 +24,13 @@ function MangasStack() {
             <MangasStackNavigator.Screen
                 name="Details"
                 component={MangaDetailsScreen}
+                options={{
+                    headerBackTitleVisible: false,
+                }}
+            />
+            <MangasStackNavigator.Screen
+                name="Chapter"
+                component={ChapterScreen}
                 options={{
                     headerBackTitleVisible: false,
                 }}

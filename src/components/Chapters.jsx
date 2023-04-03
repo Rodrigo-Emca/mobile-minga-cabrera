@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     btnContainer: {
-        width: 450,
+        width: 480,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",

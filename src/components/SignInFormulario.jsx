@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { View, TextInput, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native'
+import React, { useState } from 'react';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, TextInput, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import imgGoogle from '../images/imgGoogle.png';
 import emailIcon from '../images/emailIcon.png';
 import passwordIcon from '../images/lockIcon.png';
 
 function SignInFormulario() {
+    const navigation = useNavigation();
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     
@@ -15,33 +18,30 @@ function SignInFormulario() {
             mail: mail,
             password: password
         }
-        console.log(data)
-        setMail('')
-        setPassword('')
     
         let url_signIn = 'https://minga-back-446z.onrender.com/auth/signin';
 
         try {
-        await axios.post(url_signIn, data).then((res) => {
+        await axios.post(url_signIn, data)
+            .then((res) => {
             console.log('funcionó');
-            Alert.alert('¡Usuario creado!', 'Bienvenido', [
-                {
-                    text: 'Cancel',
-                    onPress: () => console.log('Cancel Pressed'),
-                    style: 'cancel',
-                },
+            const token = res.data.token
+            AsyncStorage.setItem('token', JSON.stringify(token))
+
+            Alert.alert('¡Usuario Online!', 'Bienvenido', [
                 {text: 'OK', onPress: () => console.log('OK Pressed')},
             ]);
+            setTimeout(() => {
+                navigation.navigate('Mangas');
+            }, 2000);
+
+            setMail('')
+            setPassword('')
         });
         } catch (error) {
         let err = error.response.data.message;
             console.log('Ocurrió un error: ' + err);
             Alert.alert('Ooops, something went wrong!', 'Credenciales incorrectas', [
-                {
-                    text: 'Cancel',
-                    onPress: () => console.log('Cancel Pressed'),
-                    style: 'cancel',
-                },
                 {text: 'OK', onPress: () => console.log('OK Pressed')},
             ]);
         }

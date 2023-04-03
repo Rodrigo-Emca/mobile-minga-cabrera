@@ -1,8 +1,11 @@
+import React from "react";
 import { Image, Text, View, StyleSheet, ImageBackground } from "react-native";
 import homeImage from '../images/home.png'
 import logo from '../images/Logo.png'
+import LogOutButton from "./LogOutButton";
 
 function Hero() {
+
     return (
         <View  style={styles.container}>
             <ImageBackground source={homeImage} resizeMode="cover" style={styles.image}>
@@ -12,11 +15,9 @@ function Hero() {
                 <View style={styles.containerTexto}>
                     <Text style={styles.title}>Live the emotion of the manga</Text>
                     <Text style={styles.text}>Find the perfect manga for you</Text>
-                    <View style={styles.btnCont}>
-                        <Text style={styles.btnTexto}>
-                            Explore
-                        </Text>
-                    </View>
+
+                <LogOutButton/>
+
                 </View>
             </ImageBackground>
         </View>

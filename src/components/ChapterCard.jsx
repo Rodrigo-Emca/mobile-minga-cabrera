@@ -9,9 +9,9 @@ export default function ChapterCard(props) {
         <View style={styles.cardContainer}>
         <View style={styles.infoContainer}>
             <Text style={styles.category}>{props.order}</Text>
-            <Text style={styles.title}>{props.title_}</Text>
+            <Text style={styles.title}>Chapter: {props.title_}</Text>
             <View style={styles.btnCont}>
-                <Text style={styles.btnTexto} onPress={() => navigation.navigate('Details', { manga: props })}>
+                <Text style={styles.btnTexto} onPress={() => navigation.navigate('Chapter', { CHAPTER: props })}>
                     Read
                 </Text>
             </View>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         fontSize: 23,
         fontWeight: 'bold',
         marginBottom: 5,
-        marginLeft: 5
+        marginLeft: 15,
     },
     category: {
         fontSize: 18,
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     },
     btnCont:{
         marginTop: 35,
+        marginLeft: 15,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
