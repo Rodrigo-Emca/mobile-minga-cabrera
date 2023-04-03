@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { Image, Text, View, StyleSheet, ImageBackground, TouchableOpacity, TextInput} from "react-native";
+import { Image, Text, View, StyleSheet, ImageBackground} from "react-native";
 import MangaCard from "./MangaCard";
 import PageButtonsPrevNext from './PageButtonsPrevNext';
 import MangaChecks from './MangasChecks';
@@ -25,6 +25,7 @@ export default function MangasAll() {
     };
 
     let mangas = useSelector(store => store.mangas.mangas)
+    console.log(mangas)
     let defaultText = useSelector(store => store.text.text)
     let defaultChecks = useSelector(store=>store.checks.checks)
 
@@ -32,7 +33,7 @@ export default function MangasAll() {
         dispatch(
             read_mangas({ inputText: defaultText, inputCheck: defaultChecks, inputPage: pageNumber })
             );
-        }, [defaultChecks, pageNumber, dispatch]);
+        }, [!reload, defaultChecks, pageNumber, dispatch]);
 
     return (
         <View  style={styles.container}>
@@ -49,7 +50,7 @@ export default function MangasAll() {
             </View>
             <View style={styles.cardsContainer}>
                 {mangas.length ? (
-                mangas.map((manga) => <MangaCard key={manga._id} title_={manga.title} category_={manga.category_id} photo={manga.cover_photo} _id={manga._id} />)
+                mangas.map((manga) => <MangaCard key={manga._id} title_={manga.title} category_={manga.category_id} photo={manga.cover_photo} description={manga.description} _id={manga._id}/>)
                 ) : (
                 <Text style={{ textAlign: 'center', marginTop: 20 }}>Not Found</Text>
                 )}
