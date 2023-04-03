@@ -11,7 +11,7 @@ import logo from '../images/Logo.png'
 const {read_mangas} = mangasActions
 
 export default function MangasAll() {
-    const [reload,setReload] = useState(false)
+    const [reload, setReload] = useState(false)
     
     const dispatch = useDispatch();
     const [pageNumber, setPageNumber] = useState(1);

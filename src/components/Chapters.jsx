@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Image, Text, View, StyleSheet, ImageBackground, TouchableOpacity, TextInput} from "react-native";
-import { useSelector, useDispatch } from "react-redux";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
 import ChapterCard from "./ChapterCard";
 import getChapters from '../../store/Chapters/actions'
-import PageButtonsPrevNext from './PageButtonsPrevNext';
+
 const {get_chapters} = getChapters
 
 export default function Chapters(props) {
