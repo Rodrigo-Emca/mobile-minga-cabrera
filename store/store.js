@@ -14,6 +14,7 @@ import authorReducer2 from "./Autores/reducer";
 import authorReducerG from './Author/reducer'
 import companyReducer from "./Company/reducer";
 import captureState from "./Capture/reducer";
+import bottomTabsReducer from './ReloadBottomTabs/reducer'
 
 export const store = configureStore({
         reducer: {
@@ -32,5 +33,6 @@ export const store = configureStore({
         Author: authorReducerG,
         Company: companyReducer,
         checked: captureState,
+        bottomTabsReducer: bottomTabsReducer,
 },
 });

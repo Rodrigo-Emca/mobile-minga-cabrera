@@ -22,12 +22,11 @@ export default function LogOutButton() {
         )
     )
 
-    // const handleLogout = async () => {
-    //     const token = await AsyncStorage.getItem('token');
-    //     const headers = {headers:{'Authorization':`Bearer ${token}`}};
-    //     const url = 'https://minga-back-446z.onrender.com/auth/signout';
-
+    // const handleLogout = async () => {        
     //     try {
+    //         const token = await AsyncStorage.getItem('token');
+    //         let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+    //         let url = 'https://minga-back-446z.onrender.com/auth/signout'
     //         await axios.post(url, "", headers);
     //         await AsyncStorage.removeItem('token');
     //         setTokenExists("");
@@ -44,6 +43,27 @@ export default function LogOutButton() {
     //     }
     //     }
 
+    // useEffect(() => {
+    //     async function handleLogout() {
+    //         try {
+    //         const token = await AsyncStorage.getItem('token');
+    //         let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+    //         let url = 'https://minga-back-446z.onrender.com/auth/signout'
+    //         await axios.post(url, "", headers)
+    //         AsyncStorage.removeItem('token')
+    //         console.log('Logout')
+    //         setLoading(false)
+    //         Alert.alert('User Offline!', 'Welcome back soon!', [
+    //             {text: 'OK', onPress: () => navigation.navigate('Home')},
+    //         ]);
+    //         setTimeout(() => navigation.navigate('Home'), 1000)
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    //     handleLogout();
+    // }, []);
+
     const handleLogout = async () => {
         await AsyncStorage.removeItem("token");
         setTokenExists("");
@@ -54,9 +74,6 @@ export default function LogOutButton() {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => navigation.navigate('MangasScreen')} style={styles.btnCont}>
-                <Text style={styles.btnTexto}>Explore</Text>
-            </TouchableOpacity>
             {token && (
                 <TouchableOpacity onPress={handleLogout} style={styles.btnCont}>
                     <Text style={styles.btnTexto}>Log Out</Text>

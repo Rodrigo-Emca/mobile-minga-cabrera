@@ -15,7 +15,6 @@ function HomeScreen() {
             AsyncStorage.getItem('token')
             .then(token => {
                 if (token) {
-                    console.log(token)
                     setTokenExists(true);
                     setShowSignUp(false); // Oculta el componente de registro o inicio de sesión
                 } else {
