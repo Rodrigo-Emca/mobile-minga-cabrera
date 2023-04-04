@@ -23,11 +23,13 @@ return (
         <View style={styles.linksContainer}>
             <View style={styles.textContainer}>
                 <Text style={styles.textIntro}>Do you want to enjoy manga?</Text>
-                <Text style={styles.textIntro}>Please register and log in to enjoy the best manga!</Text>
+                <Text style={styles.textIntro}>Please register and log in</Text>
+                <Text style={styles.textIntro}>to enjoy the best manga!</Text>
             </View>
             <View style={styles.textContainer}>
                 <Text style={styles.textIntro}>Already have an account? </Text>
-                <SignInFormulario/>
+                <Text style={styles.textLogIn} onPress={() => navigation.navigate('Home')}>Log in</Text>
+                {/* <SignInFormulario/> */}
             </View>
             <View style={styles.textContainer}>
                 <Text style={styles.textIntro}>You don´t have an account? </Text>
@@ -61,6 +63,11 @@ const styles = StyleSheet.create({
         width: 180,
         height: 180,
     },
+    textContainer: {
+        //borderWidth: 1,
+        padding: 30,
+        width: '100%'
+    },
     titleg: {
         fontSize: 30,
         fontWeight: 'bold',
@@ -72,15 +79,17 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         marginTop: 10,
+        marginBottom: 25,
         paddingHorizontal: 20,
         color: 'white'
     },
     linksContainer: {
-        height: 600,
+        height: 560,
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff'
+        justifyContent: 'space-evenly',
+        backgroundColor: '#fff',
+        //borderWidth: 5
     },
     textIntro: {
         fontSize: 24,

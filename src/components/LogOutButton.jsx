@@ -83,8 +83,6 @@ export default function LogOutButton() {
     );
 }
 
-
-
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'flex-end',
