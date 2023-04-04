@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { StyleSheet, ScrollView, SafeAreaView, StatusBar } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Hero from "../components/Hero";
 import SignIn from "../components/SignIn";
 import SignUp from '../components/SignUp'; 
 
 function HomeScreen() {
-    const [showSignUp, setShowSignUp] = useState(false);
+    const [showSignUp, setShowSignUp] = useState(true);
+    const [tokenExists, setTokenExists] = useState(false);
 
-    const onPressSignUp  = () => {
+    useFocusEffect(
+        useCallback(() => {
+            AsyncStorage.getItem('token')
+            .then(token => {
+                if (token) {
+                    setTokenExists(true);
+                    setShowSignUp(false); // Oculta el componente de registro o inicio de sesión
+                } else {
+                    setShowSignUp(true); // Muestra el componente de registro o inicio de sesión
+                }
+            })
+            .catch(err => console.log(err))
+        }, [])
+    )
+
+    const onPressSignUp = () => {
         setShowSignUp(true);
     }
 
@@ -18,12 +36,14 @@ function HomeScreen() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView  style={styles.scrollView}>
-                <Hero/>
-                {showSignUp ? <SignUp onPressSignIn={onPressSignIn} /> : <SignIn onPressSignUp={onPressSignUp} />}
+                {tokenExists ? <Hero /> : <Hero/>}
+                {showSignUp && !tokenExists && <SignUp onPressSignIn={onPressSignIn} />}
+                {!showSignUp && !tokenExists && <SignIn onPressSignUp={onPressSignUp} />}
             </ScrollView>
         </SafeAreaView>
     );
 }
+
 
 const styles = StyleSheet.create({
     container: { 
