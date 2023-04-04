@@ -2,9 +2,10 @@ import React, { useState, useCallback } from "react";
 import { ScrollView, StyleSheet, SafeAreaView, StatusBar, Text } from "react-native";
 import { Provider } from 'react-redux';  
 import { store } from '../../store/store'
-import MangasAll from "../components/MangasAll";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from "@react-navigation/native";
+import MangasAll from "../components/MangasAll";
+import LogInFirst from "../components/LogInFirst";
 
 export default function MangasScreen() {
     const [tokenExists, setTokenExists] = useState(false);
@@ -27,7 +28,7 @@ export default function MangasScreen() {
         <Provider store={store}>
         <SafeAreaView style={styles.container}>
             <ScrollView>
-            {tokenExists ? <MangasAll/> : <Text>Logueate primero</Text>}
+            {tokenExists ? <MangasAll/> : <LogInFirst/>}
             </ScrollView>
         </SafeAreaView>
         </Provider>

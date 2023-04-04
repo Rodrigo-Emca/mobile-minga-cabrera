@@ -4,6 +4,7 @@ import HomeScreen from "../screens/HomeScreen";
 import MangasScreen from "../screens/MangasScreen";
 import MangaDetailsScreen from "../screens/MangaDetailsScreen";
 import ChapterScreen from "../screens/ChapterScreen";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 const MangasStackNavigator = createNativeStackNavigator();
@@ -44,12 +45,38 @@ const Tab = createMaterialBottomTabNavigator();
 
 function BottomTabsNavigator() {
     return (
-        <Tab.Navigator  initialRouteName="Home"
-        activeColor="#f0edf6"
-        inactiveColor="#3e2465"
-        barStyle={{ backgroundColor: 'pink' }}>
-            <Tab.Screen name='Home' component={HomeScreen} />
-            <Tab.Screen name='Mangas' component={MangasStack} />
+        <Tab.Navigator
+            initialRouteName="Home"
+            activeColor="#f0edf6"
+            inactiveColor="#3e2465"
+            barStyle={{ backgroundColor: 'pink' }}
+            >
+            <Tab.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons
+                    name="home"
+                    color={color}
+                    size={26}
+                    />
+                ),
+                }}
+            />
+            <Tab.Screen
+                name="Mangas"
+                component={MangasStack}
+                options={{
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons
+                    name="book-open"
+                    color={color}
+                    size={26}
+                    />
+                ),
+                }}
+            />
         </Tab.Navigator>
     )
 }

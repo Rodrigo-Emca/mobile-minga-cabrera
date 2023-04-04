@@ -22,27 +22,27 @@ export default function LogOutButton() {
         )
     )
 
-    //const handleLogout = async () => {
-        // const token = await AsyncStorage.getItem('token');
-        // const headers = {headers:{'Authorization':`Bearer ${token}`}};
-        // const url = 'https://minga-back-446z.onrender.com/auth/signout';
+    // const handleLogout = async () => {
+    //     const token = await AsyncStorage.getItem('token');
+    //     const headers = {headers:{'Authorization':`Bearer ${token}`}};
+    //     const url = 'https://minga-back-446z.onrender.com/auth/signout';
 
-        // try {
-        //     await axios.post(url, '', { headers });
-        //     await AsyncStorage.removeItem('token');
-        //     setTokenExists("");
-        //     Alert.alert('User Offline!', 'Welcome back soon!', [
-        //         {text: 'OK', onPress: () => console.log('OK Pressed')},
-        //     ]);
-        // } catch (error) {
-        // const err = error.response.data.message;
-        // console.log('Ocurrió un error');
-        // console.log(err)
-        // Alert.alert('We´re sorry!', 'Something went wrong!', [
-        //     {text: 'OK', onPress: () => console.log('OK Pressed')},
-        // ]);
-        // }
-        // }
+    //     try {
+    //         await axios.post(url, "", headers);
+    //         await AsyncStorage.removeItem('token');
+    //         setTokenExists("");
+    //         Alert.alert('User Offline!', 'Welcome back soon!', [
+    //             {text: 'OK', onPress: () => console.log('OK Pressed')},
+    //         ]);
+    //     } catch (error) {
+    //     const err = error.response.data.message;
+    //     console.log('Ocurrió un error');
+    //     console.log(err)
+    //     Alert.alert('We´re sorry!', 'Something went wrong!', [
+    //         {text: 'OK', onPress: () => console.log('OK Pressed')},
+    //     ]);
+    //     }
+    //     }
 
     const handleLogout = async () => {
         await AsyncStorage.removeItem("token");
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'flex-end',
         height: 300,
-        // borderWidth: 5,
     }, 
     btnCont:{
         marginTop: 30,
